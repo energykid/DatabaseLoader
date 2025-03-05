@@ -70,13 +70,13 @@ namespace DatabaseLoader
 
 		virtual void AddCustomKeyword(Keyword keyword) = 0;
 
-		virtual RValue GetSound(string path) = 0;
+		virtual int GetSound(string path) = 0;
 
-		virtual RValue GetSprite(string path, int imgnum, int xorig, int yorig) = 0;
+		virtual int GetSprite(string path, int imgnum, int xorig, int yorig) = 0;
 
-		virtual RValue SpawnParticle(int x, int y, RValue sprite) = 0;
+		virtual int SpawnParticle(int x, int y, int sprite) = 0;
 
-		virtual RValue SpawnParticle(int x, int y, int xvel, int yvel, RValue sprite) = 0;
+		virtual int SpawnParticle(int x, int y, int xvel, int yvel, int sprite) = 0;
 	};
 
 	class DLInterfaceImpl : public DLInterface
@@ -99,13 +99,13 @@ namespace DatabaseLoader
 
 		void AddCustomKeyword(Keyword keyword) override final;
 
-		RValue GetSound(string path) override final;
+		int GetSound(string path) override final;
 
-		RValue GetSprite(string path, int imgnum, int xorig, int yorig) override final;
+		int GetSprite(string path, int imgnum, int xorig, int yorig) override final;
 
-		RValue SpawnParticle(int x, int y, RValue sprite) override final;
+		int SpawnParticle(int x, int y, int sprite) override final;
 
-		RValue SpawnParticle(int x, int y, int xvel, int yvel, RValue sprite) override final;
+		int SpawnParticle(int x, int y, int xvel, int yvel, int sprite) override final;
 	};
 
 	inline DLInterfaceImpl g_ModuleInterface;

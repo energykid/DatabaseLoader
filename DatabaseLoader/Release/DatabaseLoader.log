@@ -1,0 +1,29 @@
+﻿  Shared.cpp
+  DatabaseLoader.cpp
+  Keywords.cpp
+  ModuleMain.cpp
+     Creating library C:\Users\Mint\source\repos\DatabaseLoader\DatabaseLoader\Release\DatabaseLoader.lib and object C:\Users\Mint\source\repos\DatabaseLoader\DatabaseLoader\Release\DatabaseLoader.exp
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_pushcclosure
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_getmetatable
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_type
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_pushlightuserdata
+ModuleMain.obj : error LNK2001: unresolved external symbol _luaL_error
+ModuleMain.obj : error LNK2001: unresolved external symbol _luaL_checkinteger
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_createtable
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_tolstring
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_atpanic
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_call
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_touserdata
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_pushstring
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_remove
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_pushnumber
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_gettop
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_rawget
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_rawset
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_iscfunction
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_getfield
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_setmetatable
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_insert
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_settop
+ModuleMain.obj : error LNK2001: unresolved external symbol _lua_pushvalue
+C:\Users\Mint\source\repos\DatabaseLoader\DatabaseLoader\Release\DatabaseLoader.dll : fatal error LNK1120: 23 unresolved externals

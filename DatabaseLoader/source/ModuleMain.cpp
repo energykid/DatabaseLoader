@@ -1,7 +1,11 @@
+#include <iostream>
+
 #include <YYToolkit/Shared.hpp>
 #include "ModuleMain.h"
 #include "DatabaseLoader.h"
 #include "Keywords.h"
+
+#include "sol.hpp"
 
 using namespace Aurie;
 using namespace DatabaseLoader;
@@ -103,22 +107,6 @@ EXPORTED AurieStatus ModuleInitialize(
 	TRoutine original_function = nullptr;
 	CScript* script_data = nullptr;
 	int script_index = 0;
-
-	// Keyword initialization
-
-	/*
-	g_YYTKInterface->GetNamedRoutinePointer(
-		"gml_Script_resolve_weapon_base",
-		reinterpret_cast<PVOID*>(&script_data)
-	);
-	MmCreateHook(
-		g_ArSelfModule,
-		"Resolve Weapon Keywords",
-		script_data->m_Functions->m_ScriptFunction,
-		Keywords::ResolveWeaponBase,
-		reinterpret_cast<PVOID*>(&original_function)
-	);
-	*/
 
 	return AURIE_SUCCESS;
 }

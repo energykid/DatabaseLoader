@@ -50,5 +50,61 @@
     <ClInclude Include="source\Keywords.h">
       <Filter>Hlavičkové soubory</Filter>
     </ClInclude>
+    <ClInclude Include="include\sol\config.hpp">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sol\forward.hpp">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sol\sol.hpp">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua\lauxlib.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua\luaconf.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua\luajit.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua\lualib.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua\lua.hpp">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lua\lua.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="include\lua\lua54.lib" />
+    <Library Include="include\lua\lua51.lib" />
+    <Library Include="include\lua\luajit.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\lua\lua54.dll" />
+    <None Include="include\lua\lua51.dll" />
+    <None Include="include\lua\jit\bc.lua" />
+    <None Include="include\lua\jit\bcsave.lua" />
+    <None Include="include\lua\jit\dis_arm.lua" />
+    <None Include="include\lua\jit\dis_arm64.lua" />
+    <None Include="include\lua\jit\dis_arm64be.lua" />
+    <None Include="include\lua\jit\dis_mips.lua" />
+    <None Include="include\lua\jit\dis_mips64.lua" />
+    <None Include="include\lua\jit\dis_mips64el.lua" />
+    <None Include="include\lua\jit\dis_mips64r6.lua" />
+    <None Include="include\lua\jit\dis_mips64r6el.lua" />
+    <None Include="include\lua\jit\dis_mipsel.lua" />
+    <None Include="include\lua\jit\dis_ppc.lua" />
+    <None Include="include\lua\jit\dis_x64.lua" />
+    <None Include="include\lua\jit\dis_x86.lua" />
+    <None Include="include\lua\jit\dump.lua" />
+    <None Include="include\lua\jit\p.lua" />
+    <None Include="include\lua\jit\v.lua" />
+    <None Include="include\lua\jit\vmdef.lua" />
+    <None Include="include\lua\jit\zone.lua" />
+    <None Include="include\lua\Makefile" />
   </ItemGroup>
 </Project>
