@@ -82,6 +82,38 @@ EXPORTED AurieStatus ModulePreInitialize(
 	if (!AurieSuccess(last_status))
 		return AURIE_MODULE_DEPENDENCY_NOT_RESOLVED;
 
+
+	// The below code for one reason or another causes YYTK not to load DBL.
+
+	sol::state lua;
+	 
+	lua.open_libraries(sol::lib::base, sol::lib::package);
+
+	lua["debug_out"] = [](string text) {
+		yytk_interface->PrintInfo(text);
+		};
+
+	lua["set_variable"] = [](int inst, string varName, RValue value) {
+		dl_interface->SetVariable(inst, varName, value);
+		};
+	lua["spawn_particle"] = [](int x, int y, int xvel, int yvel, int sprite) {
+		dl_interface->SpawnParticle(x, y, xvel, yvel, sprite);
+		};
+	lua["get_int"] = [](int inst, string varName, RValue value) {
+		return dl_interface->GetInt(yytk_interface->CallBuiltin("instance_id_get", { inst }).AsReal(), varName);
+		};
+	lua["get_bool"] = [](int inst, string varName, RValue value) {
+		return dl_interface->GetBool(yytk_interface->CallBuiltin("instance_id_get", { inst }).AsReal(), varName);
+		};
+	lua["get_sprite"] = [](string path, int imgnum, int xorig, int yorig) {
+		return dl_interface->GetSprite(path, imgnum, xorig, yorig);
+		};
+	lua["get_sound"] = [](string path) {
+		return dl_interface->GetSound(path);
+		};
+
+	lua.script("debug_out('Lua successfully initialized')");
+	
 	return AURIE_SUCCESS;
 }
 
@@ -125,37 +157,6 @@ EXPORTED AurieStatus ModuleInitialize(
 		0);
 
 	InitMods();
-
-	// The below code for one reason or another causes YYTK not to load DBL.
-	/*
-	sol::state lua;
-
-	lua.open_libraries(sol::lib::base, sol::lib::package);
-
-	lua["debug_out"] = [](string text) {
-		yytk_interface->PrintInfo(text);
-		};
-
-	lua["set_variable"] = [](int inst, string varName, RValue value) {
-		dl_interface->SetVariable(inst, varName, value);
-		};
-	lua["spawn_particle"] = [](int x, int y, int xvel, int yvel, int sprite) {
-		dl_interface->SpawnParticle(x, y, xvel, yvel, sprite);
-		};
-	lua["get_int"] = [](int inst, string varName, RValue value) {
-		return dl_interface->GetInt(yytk_interface->CallBuiltin("instance_id_get", { inst }).AsReal(), varName);
-		};
-	lua["get_bool"] = [](int inst, string varName, RValue value) {
-		return dl_interface->GetBool(yytk_interface->CallBuiltin("instance_id_get", { inst }).AsReal(), varName);
-		};
-	lua["get_sprite"] = [](string path, int imgnum, int xorig, int yorig) {
-		return dl_interface->GetSprite(path, imgnum, xorig, yorig);
-		};
-	lua["get_sound"] = [](string path) {
-		return dl_interface->GetSound(path);
-		};
-
-	lua.script("debug_out('Lua successfully initialized')");
-	*/
+	
 	return AURIE_SUCCESS;
 }

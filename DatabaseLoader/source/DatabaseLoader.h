@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sol.hpp"
 #include "YYToolkit/Shared.hpp"
 #include "Aurie/shared.hpp"
 

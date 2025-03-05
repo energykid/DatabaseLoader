@@ -143,7 +143,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(CoreLibraryDependencies);%(AdditionalDependencies);lua51.lib;lua54.lib;luajit.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Users\Mint\source\repos\DatabaseLoader\DatabaseLoader\DatabaseLoader\lib;C:\Users\Mint\source\repos\DatabaseLoader\DatabaseLoader\DatabaseLoader\include\lua</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -191,8 +191,6 @@
     <None Include="include\lua\jit\v.lua" />
     <None Include="include\lua\jit\vmdef.lua" />
     <None Include="include\lua\jit\zone.lua" />
-    <None Include="include\lua\lua51.dll" />
-    <None Include="include\lua\lua54.dll" />
     <None Include="include\lua\Makefile" />
   </ItemGroup>
   <ItemGroup>
