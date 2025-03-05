@@ -1,17 +1,37 @@
 #include <iostream>
+#include <windows.h>
+#include <shlobj.h>
+#include <string>
 
 #include <YYToolkit/Shared.hpp>
 #include "ModuleMain.h"
 #include "DatabaseLoader.h"
 #include "Keywords.h"
 
+#define SOL_ALL_SAFETIES_ON 1
 #include "sol.hpp"
 
+string UserDirectory() {
+	char path[MAX_PATH];
+	if (SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, path) == S_OK) {
+		return std::string(path);
+	}
+	else {
+		return ""; // Return empty string if failed
+	}
+}
+
+using namespace sol;
 using namespace Aurie;
 using namespace DatabaseLoader;
 
 static DLInterface* dl_interface = nullptr;
 static YYTK::YYTKInterface* yytk_interface = nullptr;
+
+static string ModsDirectory()
+{
+	return UserDirectory() + "/Documents/DatabaseLoader/Mods";
+}
 
 /*
 void ParticleStep(CInstance* self, CInstance* other) // put custom object callbacks in here
@@ -96,6 +116,8 @@ EXPORTED AurieStatus ModuleInitialize(
 
 	yytk_interface->PrintWarning("Database Loader has initialized!");
 
+	yytk_interface->PrintWarning("Global mod directory: " + ModsDirectory());
+
 	yytk_interface->CreateCallback(
 		Module,
 		YYTK::EVENT_FRAME,
@@ -104,9 +126,36 @@ EXPORTED AurieStatus ModuleInitialize(
 
 	InitMods();
 
-	TRoutine original_function = nullptr;
-	CScript* script_data = nullptr;
-	int script_index = 0;
+	// The below code for one reason or another causes YYTK not to load DBL.
+	/*
+	sol::state lua;
 
+	lua.open_libraries(sol::lib::base, sol::lib::package);
+
+	lua["debug_out"] = [](string text) {
+		yytk_interface->PrintInfo(text);
+		};
+
+	lua["set_variable"] = [](int inst, string varName, RValue value) {
+		dl_interface->SetVariable(inst, varName, value);
+		};
+	lua["spawn_particle"] = [](int x, int y, int xvel, int yvel, int sprite) {
+		dl_interface->SpawnParticle(x, y, xvel, yvel, sprite);
+		};
+	lua["get_int"] = [](int inst, string varName, RValue value) {
+		return dl_interface->GetInt(yytk_interface->CallBuiltin("instance_id_get", { inst }).AsReal(), varName);
+		};
+	lua["get_bool"] = [](int inst, string varName, RValue value) {
+		return dl_interface->GetBool(yytk_interface->CallBuiltin("instance_id_get", { inst }).AsReal(), varName);
+		};
+	lua["get_sprite"] = [](string path, int imgnum, int xorig, int yorig) {
+		return dl_interface->GetSprite(path, imgnum, xorig, yorig);
+		};
+	lua["get_sound"] = [](string path) {
+		return dl_interface->GetSound(path);
+		};
+
+	lua.script("debug_out('Lua successfully initialized')");
+	*/
 	return AURIE_SUCCESS;
 }

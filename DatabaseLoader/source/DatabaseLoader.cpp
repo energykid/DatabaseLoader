@@ -34,6 +34,51 @@ void DatabaseLoader::DLInterfaceImpl::AddCustomKeyword(Keyword keyword)
 	customKeywords.push_back(keyword);
 }
 
+void DatabaseLoader::DLInterfaceImpl::InitializeVariable(int inst, string varName, RValue value)
+{
+	if (!g_YYTKInterface->CallBuiltin("variable_instance_exists", {
+		inst,
+		varName
+		}).AsBool())
+	{
+		g_YYTKInterface->CallBuiltin("variable_instance_set", {
+		inst,
+		varName,
+		value
+			});
+	}
+}
+
+void DatabaseLoader::DLInterfaceImpl::SetVariable(int inst, string varName, RValue value)
+{
+	g_YYTKInterface->CallBuiltin("variable_instance_set", {
+	inst,
+	varName,
+	value
+		});
+}
+
+int DatabaseLoader::DLInterfaceImpl::GetInstanceID(int inst)
+{
+	return g_YYTKInterface->CallBuiltin("variable_instance_get", {
+	inst,
+	"index" }).AsReal();
+}
+
+int DatabaseLoader::DLInterfaceImpl::GetInt(int inst, string varName)
+{
+	return g_YYTKInterface->CallBuiltin("variable_instance_get", {
+	inst,
+	varName }).AsReal();
+}
+
+bool DatabaseLoader::DLInterfaceImpl::GetBool(int inst, string varName)
+{
+	return g_YYTKInterface->CallBuiltin("variable_instance_get", {
+	inst,
+	varName }).AsBool();
+}
+
 /// <summary>
 /// Gets a sound from the given path, then returns the sound asset. .OGG ONLY.
 /// </summary>

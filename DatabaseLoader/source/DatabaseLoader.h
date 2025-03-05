@@ -35,15 +35,15 @@ namespace DatabaseLoader
 	{
 	public:
 		string objectName;
-		function<void(CInstance* self, CInstance* other)> Step{};
-		function<void(CInstance* self, CInstance* other)> Create{};
+		std::function<void(CInstance* self, CInstance* other)> Step{};
+		std::function<void(CInstance* self, CInstance* other)> Create{};
 
 		/// <summary>
 		/// A custom per-object behavior.
 		/// </summary>
 		/// <param name="name">The name of the object that uses this behavior.</param>
 		/// <param name="step">The function to run every step from the named object.</param>
-		ObjectBehavior(string name, function<void(CInstance* self, CInstance* other)> step) :
+		ObjectBehavior(string name, std::function<void(CInstance* self, CInstance* other)> step) :
 			objectName(name),
 			Step(step) {};
 	};
@@ -69,6 +69,16 @@ namespace DatabaseLoader
 		virtual void AddObjectBehavior(ObjectBehavior behavior) = 0;
 
 		virtual void AddCustomKeyword(Keyword keyword) = 0;
+
+		virtual void InitializeVariable(int inst, string varName, RValue value) = 0;
+
+		virtual void SetVariable(int inst, string varName, RValue value) = 0;
+
+		virtual int GetInstanceID(int inst) = 0;
+
+		virtual int GetInt(int inst, string varName) = 0;
+
+		virtual bool GetBool(int inst, string varName) = 0;
 
 		virtual int GetSound(string path) = 0;
 
@@ -98,6 +108,16 @@ namespace DatabaseLoader
 		void AddObjectBehavior(ObjectBehavior behavior) override final;
 
 		void AddCustomKeyword(Keyword keyword) override final;
+
+		void InitializeVariable(int inst, string varName, RValue value) override final;
+
+		void SetVariable(int inst, string varName, RValue value) override final;
+
+		int GetInstanceID(int inst) override final;
+
+		int GetInt(int inst, string varName) override final;
+
+		bool GetBool(int inst, string varName) override final;
 
 		int GetSound(string path) override final;
 
