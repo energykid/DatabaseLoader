@@ -14,7 +14,7 @@
 #include "SaverLoader.h"
 #include <fstream>
 
-#pragma comment(lib, "lua54.lib")
+#pragma comment(lib, "lua5.1.lib")
 
 using namespace Aurie;
 using namespace DatabaseLoader;

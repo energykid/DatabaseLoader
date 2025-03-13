@@ -74,7 +74,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>F:\All Downloads\DatabaseLoader</OutDir>
     <IncludePath>$(ProjectDir)include;F:\includes\lua54\include;F:\includes\sol3\include;</IncludePath>
-    <LibraryPath>;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
+    <LibraryPath>;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(ProjectDir)include;</LibraryPath>
     <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</ExternalIncludePath>
     <TargetName>MyriadLoader</TargetName>
   </PropertyGroup>
@@ -85,7 +85,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)include;F:\includes\lua54\include;F:\includes\sol3\include;</IncludePath>
-    <LibraryPath>;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);</LibraryPath>
+    <LibraryPath>;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(ProjectDir)include;</LibraryPath>
     <OutDir>F:\All Downloads\DatabaseLoader</OutDir>
     <TargetName>MyriadLoader</TargetName>
   </PropertyGroup>
@@ -125,7 +125,6 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -164,7 +163,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -233,10 +231,28 @@
     <ClInclude Include="source\WeaponIDs.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="include\lua54.dll" />
+    <None Include="include\lua\jit\bc.lua" />
+    <None Include="include\lua\jit\bcsave.lua" />
+    <None Include="include\lua\jit\dis_arm.lua" />
+    <None Include="include\lua\jit\dis_arm64.lua" />
+    <None Include="include\lua\jit\dis_arm64be.lua" />
+    <None Include="include\lua\jit\dis_mips.lua" />
+    <None Include="include\lua\jit\dis_mips64.lua" />
+    <None Include="include\lua\jit\dis_mips64el.lua" />
+    <None Include="include\lua\jit\dis_mips64r6.lua" />
+    <None Include="include\lua\jit\dis_mips64r6el.lua" />
+    <None Include="include\lua\jit\dis_mipsel.lua" />
+    <None Include="include\lua\jit\dis_ppc.lua" />
+    <None Include="include\lua\jit\dis_x64.lua" />
+    <None Include="include\lua\jit\dis_x86.lua" />
+    <None Include="include\lua\jit\dump.lua" />
+    <None Include="include\lua\jit\p.lua" />
+    <None Include="include\lua\jit\v.lua" />
+    <None Include="include\lua\jit\vmdef.lua" />
+    <None Include="include\lua\jit\zone.lua" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="include\lua54.lib" />
+    <Library Include="include\lua5.1.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
